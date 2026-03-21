@@ -49,3 +49,49 @@
             
 #         return (nums,i+1)
 # print(removeDuplicates([0, 0, 3, 3, 5, 6]))
+
+# 5.Move zeros to end
+# def moveZeroes(nums):
+#         i=0
+#         j=0
+#         while j<len(nums):
+#             if nums[j]!=0:
+#                 nums[i]=nums[j]
+#                 i+=1
+#             j+=1
+#         for k in range(i,len(nums)):
+#              nums[k]=0
+             
+#         return nums
+# print(moveZeroes([0, 20, 0, -20, 0, 20]))
+
+# 6.Left Rotate the Array by One
+# def rotateArrayByOne(nums):
+#         first_ele=nums[0]
+#         i=0
+#         for j in range(1,len(nums)):
+#             nums[i]=nums[j]
+#             i+=1
+#         nums[len(nums)-1]=first_ele
+#         return nums
+# print(rotateArrayByOne([-1, 0, 3, 6]))
+
+def rotate(nums,k):
+    k = k % len(nums)
+    i=len(nums)-1
+    h=len(nums)-1
+    temp_arr=[]
+    c=k
+    while c>0:
+        temp_arr.append(nums[i])
+        i-=1
+        c-=1
+    while i>=0:
+        nums[h]=nums[i]
+        h-=1
+        i-=1
+    for j in range(len(temp_arr)):
+        nums[h]=temp_arr[j]
+        h-=1
+    return nums
+print(rotate([1,2,3,4,5,6,7],3))

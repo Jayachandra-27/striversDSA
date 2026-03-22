@@ -76,22 +76,64 @@
 #         return nums
 # print(rotateArrayByOne([-1, 0, 3, 6]))
 
-def rotate(nums,k):
-    k = k % len(nums)
-    i=len(nums)-1
-    h=len(nums)-1
-    temp_arr=[]
-    c=k
-    while c>0:
-        temp_arr.append(nums[i])
-        i-=1
-        c-=1
-    while i>=0:
-        nums[h]=nums[i]
-        h-=1
-        i-=1
-    for j in range(len(temp_arr)):
-        nums[h]=temp_arr[j]
-        h-=1
-    return nums
-print(rotate([1,2,3,4,5,6,7],3))
+
+#6.Rotate from right by k steps
+# def rotate(nums,k):
+#     k = k % len(nums)
+#     i=len(nums)-1
+#     h=len(nums)-1
+#     temp_arr=[]
+#     c=k
+#     while c>0:
+#         temp_arr.append(nums[i])
+#         i-=1
+#         c-=1
+#     while i>=0:
+#         nums[h]=nums[i]
+#         h-=1
+#         i-=1
+#     for j in range(len(temp_arr)):
+#         nums[h]=temp_arr[j]
+#         h-=1
+#     return nums
+# print(rotate([1,2,3,4,5,6,7],3))
+
+# 7.Union of Two Sorted Arrays
+# def unionArray( nums1, nums2):
+#     d={}
+#     l=[]
+#     for i in nums1:
+#         if i not in d:
+#             d[i]=1
+#         else:
+#             d[i]+=1
+#     for j in nums2:
+#         if j in d:
+#             d[j]-=1
+#         else:
+#             d[j]=1
+#     for k,v in d.items():
+#         l.append(k)
+
+#     return l
+        
+    
+# print(unionArray([1,2,3,4,5],[2,3,4,4,5]))
+
+def findMaxConsecutiveOnes(nums):
+    max1=0
+    j=0
+    c=0
+    while j<len(nums):
+        if nums[j]==1:
+            c+=1
+        else:
+            max1=max(max1,c)
+            c=0
+        j+=1
+    max1=max(max1,c)
+    return max1
+
+
+
+print(findMaxConsecutiveOnes([1,1,0,1,1,1]))

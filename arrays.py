@@ -120,20 +120,49 @@
     
 # print(unionArray([1,2,3,4,5],[2,3,4,4,5]))
 
-def findMaxConsecutiveOnes(nums):
-    max1=0
-    j=0
-    c=0
-    while j<len(nums):
-        if nums[j]==1:
-            c+=1
-        else:
-            max1=max(max1,c)
-            c=0
-        j+=1
-    max1=max(max1,c)
-    return max1
+# 8.Maximum Consecutive Ones
+# def findMaxConsecutiveOnes(nums):
+#     max1=0
+#     j=0
+#     c=0
+#     while j<len(nums):
+#         if nums[j]==1:
+#             c+=1
+#         else:
+#             max1=max(max1,c)
+#             c=0
+#         j+=1
+#     max1=max(max1,c)
+#     return max1
 
 
 
-print(findMaxConsecutiveOnes([1,1,0,1,1,1]))
+# print(findMaxConsecutiveOnes([1,1,0,1,1,1]))
+
+# 9.Find the number that appears once, and other numbers twice.
+
+# def singleNumber(nums):
+#     res=0
+#     for i in nums:
+#         res=res^i
+#     return res
+# print(singleNumber([1, 2, 2, 4, 3,3,5, 1, 4]))
+
+#10.
+# def longestSubarray(nums, k):
+#     i=0
+#     j=0
+#     sum=0
+#     maxsum=0
+#     while j<(len(nums)):
+#         if nums[j]<k:
+#             sum+=nums[j]
+#             j+=1
+            
+#         else:
+
+        
+        
+
+# # print(longestSubarray([10, 5, 2, 7, 1, 9],15))
+# print(longestSubarray([12,7,15,3,1,9],13))

@@ -166,3 +166,69 @@
 
 # # print(longestSubarray([10, 5, 2, 7, 1, 9],15))
 # print(longestSubarray([12,7,15,3,1,9],13))
+
+# 11.Merge two sorted arrays
+# def merge(nums1, m, nums2, n):
+#         k=m+n-1
+#         i=m-1
+#         j=n-1
+#         while i>=0 and j>=0:
+#             if nums1[i]<nums2[j]:
+#                 nums1[k]=nums2[j]
+#                 j-=1
+#                 k-=1
+#             elif nums1[i]>=nums2[j]:
+#                 nums1[k]=nums1[i]
+#                 i-=1
+#                 k-=1
+#         while i>=0:
+#             nums1[k]=nums1[i]
+#             i-=1
+#             k-=1
+#         while j>=0:
+#             nums1[k]=nums2[j]
+#             j-=1
+#             k-=1
+#         return nums1
+# print(merge([1,2,3,0,0,0],3,[2,5,6],3))
+
+# 12.---977. Squares of a Sorted Array
+def sortedSquares(nums):
+        neg_list=[]
+        pos_list=[]
+        neg_rev_list=[]
+        final_list=[]
+        for i in nums:
+            if i>=0:
+                pos_list.append(i**2)
+            else:
+                neg_list.append(i**2)
+        for i in range(len(neg_list)-1,-1,-1):
+            neg_rev_list.append(neg_list[i])
+        if len(neg_list)==0:
+            return pos_list
+        if len(pos_list)==0:
+            return neg_rev_list
+        i=0
+        j=0
+        k=0
+        while i<len(neg_rev_list) and j<len(pos_list):
+            if neg_rev_list[i]<pos_list[j]:
+                final_list.append(neg_rev_list[i])
+                
+                i+=1
+            else:
+                final_list.append(pos_list[j])
+                 
+                j+=1
+        while i<len(neg_rev_list):
+            final_list.append(neg_rev_list[i])
+             
+            i+=1
+        while j<len(pos_list):
+            final_list.append(pos_list[j])
+             
+            j+=1
+        return final_list
+print(sortedSquares([-4,-1,0,3,10]))
+

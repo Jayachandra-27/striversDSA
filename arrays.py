@@ -193,42 +193,93 @@
 # print(merge([1,2,3,0,0,0],3,[2,5,6],3))
 
 # 12.---977. Squares of a Sorted Array
-def sortedSquares(nums):
-        neg_list=[]
-        pos_list=[]
-        neg_rev_list=[]
-        final_list=[]
-        for i in nums:
-            if i>=0:
-                pos_list.append(i**2)
-            else:
-                neg_list.append(i**2)
-        for i in range(len(neg_list)-1,-1,-1):
-            neg_rev_list.append(neg_list[i])
-        if len(neg_list)==0:
-            return pos_list
-        if len(pos_list)==0:
-            return neg_rev_list
-        i=0
-        j=0
-        k=0
-        while i<len(neg_rev_list) and j<len(pos_list):
-            if neg_rev_list[i]<pos_list[j]:
-                final_list.append(neg_rev_list[i])
+# def sortedSquares(nums):
+#         neg_list=[]
+#         pos_list=[]
+#         neg_rev_list=[]
+#         final_list=[]
+#         for i in nums:
+#             if i>=0:
+#                 pos_list.append(i**2)
+#             else:
+#                 neg_list.append(i**2)
+#         for i in range(len(neg_list)-1,-1,-1):
+#             neg_rev_list.append(neg_list[i])
+#         if len(neg_list)==0:
+#             return pos_list
+#         if len(pos_list)==0:
+#             return neg_rev_list
+#         i=0
+#         j=0
+#         k=0
+#         while i<len(neg_rev_list) and j<len(pos_list):
+#             if neg_rev_list[i]<pos_list[j]:
+#                 final_list.append(neg_rev_list[i])
                 
-                i+=1
-            else:
-                final_list.append(pos_list[j])
+#                 i+=1
+#             else:
+#                 final_list.append(pos_list[j])
                  
-                j+=1
-        while i<len(neg_rev_list):
-            final_list.append(neg_rev_list[i])
+#                 j+=1
+#         while i<len(neg_rev_list):
+#             final_list.append(neg_rev_list[i])
              
-            i+=1
-        while j<len(pos_list):
-            final_list.append(pos_list[j])
+#             i+=1
+#         while j<len(pos_list):
+#             final_list.append(pos_list[j])
              
-            j+=1
-        return final_list
-print(sortedSquares([-4,-1,0,3,10]))
+#             j+=1
+#         return final_list
+# print(sortedSquares([-4,-1,0,3,10]))
+
+# 13.----15. 3Sum
+# def threeSum(nums):
+#         nums.sort()
+#         l=[]
+#         for i in range(len(nums)-2):
+#             if i>0 and nums[i]==nums[i-1]:
+#                 continue
+#             left=i+1
+#             right=len(nums)-1
+#             asum=-1*nums[i]
+#             while left<right:
+#                 c_sum=nums[left]+nums[right]
+#                 if asum==c_sum:
+#                     l.append([nums[i],nums[left],nums[right]])
+#                     left+=1
+#                     right-=1
+#                     while left<right and nums[left]==nums[left-1]:
+#                         left+=1
+#                     while left<right and nums[right]==nums[right+1]:
+#                         right-=1
+#                 elif c_sum<asum:
+#                     left+=1
+#                 else:
+#                     right-=1
+#         return l
+# print(threeSum([-1,0,1,2,-1,-4]))
+
+# 14.----16. 3Sum Closest
+def threeSumClosest(nums, target):
+        nums.sort()
+        close= nums[0] + nums[1] + nums[2]
+        for i in range(len(nums)-2):
+            
+            left=i+1
+            right=len(nums)-1
+            
+            while left<right:
+                c_sum=nums[i]+nums[left]+nums[right]
+                if abs(c_sum - target) < abs(close - target):
+                    close = c_sum
+                    
+                elif c_sum<target:
+                    
+                    left+=1
+                elif c_sum > target:
+                    right -= 1
+                else:
+                    return c_sum
+        return close
+print(threeSumClosest([-1,2,1,-4],1))
 

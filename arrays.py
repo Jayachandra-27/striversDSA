@@ -260,54 +260,77 @@
 # print(threeSum([-1,0,1,2,-1,-4]))
 
 # 14.----16. 3Sum Closest
-def threeSumClosest(nums, target):
-        nums.sort()
-        close= nums[0] + nums[1] + nums[2]
-        for i in range(len(nums)-2):
+# def threeSumClosest(nums, target):
+#         nums.sort()
+#         close= nums[0] + nums[1] + nums[2]
+#         for i in range(len(nums)-2):
             
-            left=i+1
-            right=len(nums)-1
+#             left=i+1
+#             right=len(nums)-1
             
-            while left<right:
-                c_sum=nums[i]+nums[left]+nums[right]
-                if abs(c_sum - target) < abs(close - target):
-                    close = c_sum
+#             while left<right:
+#                 c_sum=nums[i]+nums[left]+nums[right]
+#                 if abs(c_sum - target) < abs(close - target):
+#                     close = c_sum
                     
-                elif c_sum<target:
+#                 elif c_sum<target:
                     
-                    left+=1
-                elif c_sum > target:
-                    right -= 1
-                else:
-                    return c_sum
-        return close
-print(threeSumClosest([-1,2,1,-4],1))
+#                     left+=1
+#                 elif c_sum > target:
+#                     right -= 1
+#                 else:
+#                     return c_sum
+#         return close
+# print(threeSumClosest([-1,2,1,-4],1))
 
-# 2 sum with duplicates in array
-def twoSumDup(arr,target):
+# # 2 sum with duplicates in array
+# def twoSumDup(arr,target):
+#     n=len(arr)
+#     left=0
+#     right=n-1
+#     l=[]
+#     while left<right:
+#         s=arr[left]+arr[right]
+#         if s==target:
+#             l.append([arr[left],arr[right]])
+#             left+=1
+#             right-=1
+#             while arr[left]==arr[left-1]:
+#                 left+=1
+#             while arr[right]==arr[right+1]:
+#                 right-=1
+#         elif s<target:
+#             left+=1
+#         else:
+#             right-=1
+#     return l
+# print(twoSumDup([0,1,1,1,2,2,3,3,3,4,4,5],5)) 
+
+# 15-Triplets with Smaller Sum
+def countTriplets(n, sum, arr):
+    arr.sort()
     n=len(arr)
-    left=0
-    right=n-1
-    l=[]
-    while left<right:
-        s=arr[left]+arr[right]
-        if s==target:
-            l.append([arr[left],arr[right]])
-            left+=1
-            right-=1
-            while arr[left]==arr[left-1]:
+    c=0
+    for i in range(n-2):
+        left=i+1
+        right=n-1
+        while left<right:
+            s=arr[i]+arr[left]+arr[right]
+            if s<sum:
+                c=c+(right-left)
                 left+=1
-            while arr[right]==arr[right+1]:
+                
+            elif s>=sum:
                 right-=1
-        elif s<target:
-            left+=1
-        else:
-            right-=1
-    return l
-    
+    return c
+                
 
 
 
-               
-print(twoSumDup([0,1,1,1,2,2,3,3,3,4,4,5],5)) 
+
+
+
+
+print(countTriplets(5,12,[5, 1, 3, 4, 7]))
+
 

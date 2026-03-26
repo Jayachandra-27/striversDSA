@@ -283,3 +283,31 @@ def threeSumClosest(nums, target):
         return close
 print(threeSumClosest([-1,2,1,-4],1))
 
+# 2 sum with duplicates in array
+def twoSumDup(arr,target):
+    n=len(arr)
+    left=0
+    right=n-1
+    l=[]
+    while left<right:
+        s=arr[left]+arr[right]
+        if s==target:
+            l.append([arr[left],arr[right]])
+            left+=1
+            right-=1
+            while arr[left]==arr[left-1]:
+                left+=1
+            while arr[right]==arr[right+1]:
+                right-=1
+        elif s<target:
+            left+=1
+        else:
+            right-=1
+    return l
+    
+
+
+
+               
+print(twoSumDup([0,1,1,1,2,2,3,3,3,4,4,5],5)) 
+

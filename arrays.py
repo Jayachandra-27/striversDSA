@@ -307,30 +307,45 @@
 # print(twoSumDup([0,1,1,1,2,2,3,3,3,4,4,5],5)) 
 
 # 15-Triplets with Smaller Sum
-def countTriplets(n, sum, arr):
-    arr.sort()
-    n=len(arr)
-    c=0
-    for i in range(n-2):
-        left=i+1
-        right=n-1
-        while left<right:
-            s=arr[i]+arr[left]+arr[right]
-            if s<sum:
-                c=c+(right-left)
-                left+=1
+# def countTriplets(n, sum, arr):
+#     arr.sort()
+#     n=len(arr)
+#     c=0
+#     for i in range(n-2):
+#         left=i+1
+#         right=n-1
+#         while left<right:
+#             s=arr[i]+arr[left]+arr[right]
+#             if s<sum:
+#                 c=c+(right-left)
+#                 left+=1
                 
-            elif s>=sum:
-                right-=1
-    return c
-                
+#             elif s>=sum:
+#                 right-=1
+#     return c
+# print(countTriplets(5,12,[5, 1, 3, 4, 7]))
 
+# 16.------75. Sort Colors
+def sortColors(nums):
+    n=len(nums)
+    a0=0
+    a1=0
+    a2=0
+    for i in range(n):
+        if nums[i]==0:
+            a0+=1
+        elif nums[i]==1:
+            a1+=1
+        else:
+            a2+=1
 
-
-
-
-
-
-print(countTriplets(5,12,[5, 1, 3, 4, 7]))
+    for i in range(0,a0):
+        nums[i]=0
+    for i in range(a0,a0+a1):
+        nums[i]=1
+    for i in range(a0+a1,a0+a1+a2):
+        nums[i]=2
+    return nums
+print(sortColors([2,0,2,1,1,0]))
 
 

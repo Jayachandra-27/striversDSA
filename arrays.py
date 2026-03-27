@@ -348,4 +348,12 @@ def sortColors(nums):
     return nums
 print(sortColors([2,0,2,1,1,0]))
 
+a='jayachandrac'
+result=''
+for i in range((len(a)//2)-1,-1,-1):
+	result+=a[i]
+for i in range(len(a)//2,len(a)):
+	result+=a[i]
+print(result)
+
 

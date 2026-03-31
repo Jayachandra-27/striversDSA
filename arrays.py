@@ -355,5 +355,6 @@ for i in range((len(a)//2)-1,-1,-1):
 for i in range(len(a)//2,len(a)):
 	result+=a[i]
 print(result)
+print('hello')
 
 

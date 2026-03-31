@@ -357,4 +357,22 @@ for i in range(len(a)//2,len(a)):
 print(result)
 print('hello')
 
+def maxSubarraySum(arr, k):
+        # code here 
+        left=0
+        right=k-1
+        sum=0
+        res=0
+        for i in range(k):
+            sum+=arr[i]
+        while right<len(arr):
+            res=max(res,sum)
+            left+=1
+            right+=1
+            if right==len(arr):
+                break
+            sum=sum+arr[right]-arr[left-1]
+        return res
+print(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20],4))
+
 
